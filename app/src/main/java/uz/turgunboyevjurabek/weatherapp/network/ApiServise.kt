@@ -7,5 +7,5 @@ import uz.turgunboyevjurabek.weatherapp.madels.Api
 interface ApiService {
     @GET("forecast/")
     fun getAll():Call<ArrayList<Api>>
-    
+
 }
