@@ -3,13 +3,15 @@ package uz.turgunboyevjurabek.weatherapp.madels
 
 import com.google.gson.annotations.SerializedName
 
-data class Api(
+data class Primary(
+    @SerializedName("city")
+    var city: City,
     @SerializedName("cnt")
-    val cnt: Int,
+    var cnt: Int,
     @SerializedName("cod")
-    val cod: String,
+    var cod: String,
     @SerializedName("list")
-    val list: List<Main>,
+    var list: ArrayList<Kt> = arrayListOf(),
     @SerializedName("message")
-    val message: Int
+    var message: Int
 )
