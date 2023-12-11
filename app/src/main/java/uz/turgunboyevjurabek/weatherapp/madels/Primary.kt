@@ -11,7 +11,7 @@ data class Primary(
     @SerializedName("cod")
     var cod: String,
     @SerializedName("list")
-    var list: ArrayList<Kt> = arrayListOf(),
+    var list: List<Kt> = arrayListOf(),
     @SerializedName("message")
     var message: Int
 )

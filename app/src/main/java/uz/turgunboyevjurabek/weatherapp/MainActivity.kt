@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import uz.turgunboyevjurabek.weatherapp.databinding.ActivityMainBinding
 import uz.turgunboyevjurabek.weatherapp.madels.Primary
+import uz.turgunboyevjurabek.weatherapp.madels.current.Current
 import uz.turgunboyevjurabek.weatherapp.network.ApiClient
 import uz.turgunboyevjurabek.weatherapp.network.ApiService
 
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity() {
                               Toast.makeText(this@MainActivity, "not success", Toast.LENGTH_SHORT).show()
                           }
                       }
-
                       override fun onFailure(call: Call<ArrayList<Primary>>, t: Throwable) {
                           Toast.makeText(this@MainActivity, "${t.message} ishkal", Toast.LENGTH_SHORT).show()
                           Log.d("ishkal",t.message.toString() )
