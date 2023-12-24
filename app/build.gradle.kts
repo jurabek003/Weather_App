@@ -66,18 +66,6 @@ dependencies {
      */
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
 
-    /**
-     * Okhttp chuck
-     */
-    debugImplementation ("com.readystatesoftware.chuck:library:1.1.0")
-        releaseImplementation ("com.readystatesoftware.chuck:library-no-op:1.1.0")
-
-    /**
-     *  retrofit rxjava adapter
-     */
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.5.0")
-        implementation ("io.reactivex.rxjava2:rxandroid:2.0.1")
-
         // agar gredle hatolik bersa kerak bo'ladi
         // android.enableJetifier=true
 

@@ -1,17 +1,10 @@
-package uz.turgunboyevjurabek.weatherapp.madels.current
+package uz.turgunboyevjurabek.weatherapp.madels.current2
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Sys(
-
     val country: String,
-
-    val id: Int,
-
     val sunrise: Int,
-
-    val sunset: Int,
-
-    val type: Int
+    val sunset: Int
 )

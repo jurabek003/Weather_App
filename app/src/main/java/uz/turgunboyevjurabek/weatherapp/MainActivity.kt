@@ -11,7 +11,9 @@ import retrofit2.Response
 import uz.turgunboyevjurabek.weatherapp.databinding.ActivityMainBinding
 import uz.turgunboyevjurabek.weatherapp.madels.Primary
 import uz.turgunboyevjurabek.weatherapp.madels.current.Current
+import uz.turgunboyevjurabek.weatherapp.madels.current2.Current2
 import uz.turgunboyevjurabek.weatherapp.network.ApiClient
+import uz.turgunboyevjurabek.weatherapp.network.ApiClient.API_KEY
 import uz.turgunboyevjurabek.weatherapp.network.ApiService
 
 
@@ -24,28 +26,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val lat ="41.2995"
-        val lon = "69.2401"
+        val lat =41.2995
+        val lon = 69.2401
 
-          apiSevis=ApiClient.getApiService()
-                  apiSevis.getAll(lat,lon).enqueue(@SuppressLint("SuspiciousIndentation")
-                  object : Callback<ArrayList<Primary>> {
-                      override fun onResponse(
-                          call: Call<ArrayList<Primary>>,
-                          response: Response<ArrayList<Primary>>,
-                      ) {
-                          if (response.isSuccessful){
-                              val list=response.body()
-                              Toast.makeText(this@MainActivity, "$list", Toast.LENGTH_SHORT).show()
-                          }else{
-                              Toast.makeText(this@MainActivity, "not success", Toast.LENGTH_SHORT).show()
-                          }
-                      }
-                      override fun onFailure(call: Call<ArrayList<Primary>>, t: Throwable) {
-                          Toast.makeText(this@MainActivity, "${t.message} ishkal", Toast.LENGTH_SHORT).show()
-                          Log.d("ishkal",t.message.toString() )
-                      }
-                  })
+         apiSevis=ApiClient.getApiService()
 
+        apiSevis.getAll(lat,lon).enqueue(object :Callback<Current2>{
+            override fun onResponse(
+                call: Call<Current2>,
+                response: Response<Current2>,
+            ) {
+                if (response.isSuccessful){
+                    Toast.makeText(this@MainActivity, "ura ${response.body()}", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Current2>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "${t.message}  ishkalll", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
