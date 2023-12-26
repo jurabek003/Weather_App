@@ -3,41 +3,34 @@ package uz.turgunboyevjurabek.weatherapp
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import android.view.View
+
+import androidx.core.content.ContextCompat
+import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.weatherapp.databinding.ActivityMainBinding
-import uz.turgunboyevjurabek.weatherapp.model.madels.Primary
-import uz.turgunboyevjurabek.weatherapp.model.madels.current.Current
-import uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2
-import uz.turgunboyevjurabek.weatherapp.network.ApiClient
-import uz.turgunboyevjurabek.weatherapp.network.ApiClient.API_KEY
-import uz.turgunboyevjurabek.weatherapp.network.ApiService
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private lateinit var apiSevis :ApiService
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val lat =41.2995
-        val lon = 69.2401
 
-         apiSevis=ApiClient.getApiService()
+        statusBarEdit()
 
-        apiSevis.getAll(lat,lon).enqueue(object :Callback<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>{
+
+      /*  apiSevis.getAll(lat,lon).enqueue(object :Callback<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>{
             override fun onResponse(
                 call: Call<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>,
                 response: Response<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>,
             ) {
                 if (response.isSuccessful){
                     Toast.makeText(this@MainActivity, "ura ${response.body()}", Toast.LENGTH_LONG).show()
+                    Log.d("keldi", "onResponse: ${response.body()} ")
                 }
             }
 
@@ -45,5 +38,16 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "${t.message}  ishkalll", Toast.LENGTH_SHORT).show()
             }
         })
+       */
+    }
+
+    private fun statusBarEdit() {
+        /**
+         * StatusBarni  o'zgartirish
+         */
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+
     }
 }
