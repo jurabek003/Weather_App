@@ -9,9 +9,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import uz.turgunboyevjurabek.weatherapp.databinding.ActivityMainBinding
-import uz.turgunboyevjurabek.weatherapp.madels.Primary
-import uz.turgunboyevjurabek.weatherapp.madels.current.Current
-import uz.turgunboyevjurabek.weatherapp.madels.current2.Current2
+import uz.turgunboyevjurabek.weatherapp.model.madels.Primary
+import uz.turgunboyevjurabek.weatherapp.model.madels.current.Current
+import uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2
 import uz.turgunboyevjurabek.weatherapp.network.ApiClient
 import uz.turgunboyevjurabek.weatherapp.network.ApiClient.API_KEY
 import uz.turgunboyevjurabek.weatherapp.network.ApiService
@@ -31,17 +31,17 @@ class MainActivity : AppCompatActivity() {
 
          apiSevis=ApiClient.getApiService()
 
-        apiSevis.getAll(lat,lon).enqueue(object :Callback<Current2>{
+        apiSevis.getAll(lat,lon).enqueue(object :Callback<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>{
             override fun onResponse(
-                call: Call<Current2>,
-                response: Response<Current2>,
+                call: Call<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>,
+                response: Response<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>,
             ) {
                 if (response.isSuccessful){
                     Toast.makeText(this@MainActivity, "ura ${response.body()}", Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onFailure(call: Call<Current2>, t: Throwable) {
+            override fun onFailure(call: Call<uz.turgunboyevjurabek.weatherapp.model.madels.current2.Current2>, t: Throwable) {
                 Toast.makeText(this@MainActivity, "${t.message}  ishkalll", Toast.LENGTH_SHORT).show()
             }
         })
