@@ -5,10 +5,6 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <!-- Boshqalar -->
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <!-- StatusBar rangi -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
 
     </style>
 

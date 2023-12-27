@@ -10,11 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
-import uz.turgunboyevjurabek.weatherapp.R
 import uz.turgunboyevjurabek.weatherapp.databinding.FragmentHomeBinding
 import uz.turgunboyevjurabek.weatherapp.utils.Status
-import uz.turgunboyevjurabek.weatherapp.vm.CurrentWeatherViewModel
-import kotlin.math.log
+import uz.turgunboyevjurabek.weatherapp.vm.current.CurrentWeatherViewModel
 
 
 @AndroidEntryPoint
@@ -30,8 +28,16 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getApiWorking()
     }
 
@@ -55,7 +61,7 @@ class HomeFragment : Fragment() {
                     binding.thtCountry.text=it.data?.sys?.country.toString()
                     val g=(it.data?.main?.temp_max!!-273.0).toInt()
                     binding.thtGradus.text="${g}℃"
-
+                    binding.thtDescription.text=it.data.weather[0].description.toString()
                 }
             }
         })

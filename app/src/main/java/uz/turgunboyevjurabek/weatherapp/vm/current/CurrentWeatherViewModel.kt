@@ -1,4 +1,4 @@
-package uz.turgunboyevjurabek.weatherapp.vm
+package uz.turgunboyevjurabek.weatherapp.vm.current
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

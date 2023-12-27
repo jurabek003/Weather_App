@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="98dp"
+                android:layout_marginTop="80dp"
                 />
             <TextView
                 android:id="@+id/tht_gradus"
@@ -48,6 +48,85 @@
                 app:layout_constraintEnd_toEndOf="parent"
 
                 />
+             <TextView
+                android:id="@+id/tht_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="clear sky"
+                android:textColor="@color/white"
+                android:fontFamily="@font/arbutus_slab"
+                android:textSize="18dp"
+                 android:alpha="0.9"
+                 app:layout_constraintTop_toBottomOf="@+id/tht_gradus"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/img_house"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/house"
+                app:layout_constraintTop_toBottomOf="@+id/tht_description" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical"
+                android:background="@drawable/reanded"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:text="Hourly Forecast"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginStart="32dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
+                        android:text="Weekly Forecast"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginEnd="32dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_hourly"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+
+                    android:background="@drawable/bottom_bac"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </LinearLayout>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
