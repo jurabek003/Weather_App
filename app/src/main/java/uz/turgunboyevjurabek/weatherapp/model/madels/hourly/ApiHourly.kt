@@ -11,7 +11,7 @@ data class ApiHourly(
     @SerializedName("cod")
     val cod: String,
     @SerializedName("list")
-    val list: List<Hourly>,
+    val list: ArrayList<Hourly>,
     @SerializedName("message")
     val message: Int
 )

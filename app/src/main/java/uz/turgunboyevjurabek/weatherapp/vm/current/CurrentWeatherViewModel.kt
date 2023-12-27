@@ -16,7 +16,7 @@ import uz.turgunboyevjurabek.weatherapp.utils.Resource
 import javax.inject.Inject
 
 @HiltViewModel
-class CurrentWeatherViewModel @Inject constructor(val appRepository: AppRepository):ViewModel() {
+class CurrentWeatherViewModel @Inject constructor(private val appRepository: AppRepository):ViewModel() {
     private val getApiLiveData=MutableLiveData<Resource<Current2>>()
     fun getApi(lat:Double,lon:Double):MutableLiveData<Resource<Current2>>{
         viewModelScope.launch {

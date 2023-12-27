@@ -10,15 +10,20 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
+import uz.turgunboyevjurabek.weatherapp.adapter.HourlyRvAdapter
 import uz.turgunboyevjurabek.weatherapp.databinding.FragmentHomeBinding
+import uz.turgunboyevjurabek.weatherapp.model.madels.hourly.ApiHourly
 import uz.turgunboyevjurabek.weatherapp.utils.Status
 import uz.turgunboyevjurabek.weatherapp.vm.current.CurrentWeatherViewModel
+import uz.turgunboyevjurabek.weatherapp.vm.hourly.HourlyViewModel
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val binding by lazy {FragmentHomeBinding.inflate(layoutInflater)}
     private  val currentWeatherViewModel: CurrentWeatherViewModel by viewModels()
+    private val hourlyViewModel:HourlyViewModel by viewModels()
+    lateinit var hourlyRvAdapter: HourlyRvAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -38,13 +43,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getApiWorking()
+        getCurrentApiWorking()
+        getHourlyApiWorking()
+
     }
 
-    private fun getApiWorking() {
-        val lat =41.2995
-        val lon = 69.2401
-
+    private fun getCurrentApiWorking() {
+        val lat =40.5409
+        val lon = 70.9483
+        /**
+         * Current Api olib kelish
+         */
         currentWeatherViewModel.getApi(lat,lon).observe(requireActivity(), Observer {
             when(it.status){
                 Status.LOADING -> {
@@ -65,5 +74,29 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun getHourlyApiWorking(){
+        val lat =40.5409
+        val lon = 70.9483
+
+        hourlyViewModel.getHourlyData(lat,lon).observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "mayli siqlma ${it.message}", Toast.LENGTH_SHORT).show()
+                    Log.d("blaaa","${it.message}" )
+                }
+                Status.SUCCESS -> {
+                    hourlyRvAdapter= HourlyRvAdapter()
+                    hourlyRvAdapter.updateData(it.data?.list!!)
+                    binding.rvHourly.adapter=hourlyRvAdapter
+                    hourlyRvAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+
     }
 }
