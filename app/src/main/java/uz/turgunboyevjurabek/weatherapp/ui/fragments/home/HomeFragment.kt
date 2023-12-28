@@ -14,6 +14,7 @@ import uz.turgunboyevjurabek.weatherapp.adapter.HourlyRvAdapter
 import uz.turgunboyevjurabek.weatherapp.databinding.FragmentHomeBinding
 import uz.turgunboyevjurabek.weatherapp.model.madels.hourly.ApiHourly
 import uz.turgunboyevjurabek.weatherapp.utils.Status
+import uz.turgunboyevjurabek.weatherapp.vm.Hourly2ViewModel
 import uz.turgunboyevjurabek.weatherapp.vm.current.CurrentWeatherViewModel
 import uz.turgunboyevjurabek.weatherapp.vm.hourly.HourlyViewModel
 
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
     private val binding by lazy {FragmentHomeBinding.inflate(layoutInflater)}
     private  val currentWeatherViewModel: CurrentWeatherViewModel by viewModels()
     private val hourlyViewModel:HourlyViewModel by viewModels()
+    private val hourly2ViewModel:Hourly2ViewModel  by viewModels()
     lateinit var hourlyRvAdapter: HourlyRvAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +47,25 @@ class HomeFragment : Fragment() {
 
         getCurrentApiWorking()
         getHourlyApiWorking()
+        getHourly2ApiWorking()
+    }
 
+    private fun getHourly2ApiWorking() {
+        val lat =40.5409
+        val lon = 70.9483
+        hourly2ViewModel.getApi(lat, lon).observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "ehh ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), "uraaa ${it.data}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
     private fun getCurrentApiWorking() {
