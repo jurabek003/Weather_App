@@ -119,12 +119,7 @@ class HomeFragment : Fragment() {
 
 
                     binding.blurView.setupWith(binding.mainLayout)
-                        .setBlurRadius(7f)
-                        .setBlurEnabled(true)
-                        .setBlurAutoUpdate(true)
-                    val itemRvHourlyBinding=ItemRvHourlyBinding.inflate(layoutInflater)
-                    itemRvHourlyBinding.blurView3.setupWith(itemRvHourlyBinding.itemLayout)
-                        .setBlurRadius(7f)
+                        .setBlurRadius(5f)
                         .setBlurEnabled(true)
                         .setBlurAutoUpdate(true)
 
