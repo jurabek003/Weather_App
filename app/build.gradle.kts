@@ -109,8 +109,14 @@ dependencies {
      */
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
+    /**
+     * BlurView
+     */
+    implementation("com.github.Dimezis:BlurView:version-2.0.3")
+
 
     // agar gredle hatolik bersa kerak bo'ladi
         // android.enableJetifier=true
+
 
 }

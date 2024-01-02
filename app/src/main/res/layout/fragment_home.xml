@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/main_bacround2"
     tools:context=".ui.fragments.home.HomeFragment">
@@ -62,71 +63,64 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
-            <ImageView
-                android:id="@+id/img_house"
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_view"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="50dp"
-                android:src="@drawable/house"
-                app:layout_constraintTop_toBottomOf="@+id/tht_description" />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:orientation="vertical"
-                android:background="@drawable/reanded"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"
-                        android:text="Hourly Forecast"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginStart="32dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"
-                        android:text="Weekly Forecast"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginEnd="32dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_hourly"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?actionBarSize">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:text="Hourly Forecast"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginStart="32dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:text="Weekly Forecast"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginEnd="32dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    android:background="@drawable/bottom_bac"
-                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:orientation="horizontal">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_hourly"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
+            </eightbitlab.com.blurview.BlurView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

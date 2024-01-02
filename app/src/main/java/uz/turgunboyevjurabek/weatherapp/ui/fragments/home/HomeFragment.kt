@@ -1,5 +1,6 @@
 package uz.turgunboyevjurabek.weatherapp.ui.fragments.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,8 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
+import eightbitlab.com.blurview.RenderScriptBlur
+import uz.turgunboyevjurabek.weatherapp.R
 import uz.turgunboyevjurabek.weatherapp.adapter.HourlyRvAdapter
 import uz.turgunboyevjurabek.weatherapp.databinding.FragmentHomeBinding
+import uz.turgunboyevjurabek.weatherapp.databinding.ItemRvHourlyBinding
 import uz.turgunboyevjurabek.weatherapp.model.madels.hourly.ApiHourly
 import uz.turgunboyevjurabek.weatherapp.utils.Status
 import uz.turgunboyevjurabek.weatherapp.vm.Hourly2ViewModel
@@ -48,6 +52,8 @@ class HomeFragment : Fragment() {
         getCurrentApiWorking()
         getHourlyApiWorking()
         getHourly2ApiWorking()
+
+
     }
 
     private fun getHourly2ApiWorking() {
@@ -110,10 +116,26 @@ class HomeFragment : Fragment() {
                     Log.d("blaaa","${it.message}" )
                 }
                 Status.SUCCESS -> {
+
+
+                    binding.blurView.setupWith(binding.mainLayout)
+                        .setBlurRadius(7f)
+                        .setBlurEnabled(true)
+                        .setBlurAutoUpdate(true)
+                    val itemRvHourlyBinding=ItemRvHourlyBinding.inflate(layoutInflater)
+                    itemRvHourlyBinding.blurView3.setupWith(itemRvHourlyBinding.itemLayout)
+                        .setBlurRadius(7f)
+                        .setBlurEnabled(true)
+                        .setBlurAutoUpdate(true)
+
+
                     hourlyRvAdapter= HourlyRvAdapter()
                     hourlyRvAdapter.updateData(it.data?.list!!)
                     binding.rvHourly.adapter=hourlyRvAdapter
                     hourlyRvAdapter.notifyDataSetChanged()
+
+
+
                 }
             }
         })
