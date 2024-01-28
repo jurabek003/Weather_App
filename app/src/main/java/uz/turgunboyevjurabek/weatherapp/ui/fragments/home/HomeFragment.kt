@@ -70,9 +70,12 @@ class HomeFragment : Fragment() {
                     binding.shimmerLayout.hideShimmer()
 
                     binding.thtCountry.text=it.data?.sys?.country.toString()
+                    binding.thtCountryCity.text=it.data?.name
+                    Log.d("uraaa", it.data.toString())
                     val g=(it.data?.main?.temp_max!!-273.0).toInt()
                     binding.thtGradus.text="${g}℃"
                     binding.thtDescription.text=it.data.weather[0].description.toString()
+
                 }
             }
         })
