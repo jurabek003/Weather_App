@@ -9,6 +9,7 @@
     tools:context=".ui.fragments.home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_layout"
         android:layout_width="0dp"
@@ -18,7 +19,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingClass">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -64,70 +67,23 @@
                 />
 
 
-            <eightbitlab.com.blurview.BlurView
-                android:id="@+id/blur_view"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-
-                app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="200dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="?actionBarSize">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="Hourly Forecast"
-                            android:layout_gravity="bottom"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginStart="32dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="Weekly Forecast"
-                            android:layout_gravity="bottom"
-                            android:layout_marginBottom="6dp"
-                            android:layout_marginEnd="32dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_hourly"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="horizontal">
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_hourly"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:layout_constraintEnd_toEndOf="parent" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                    </LinearLayout>
                 </LinearLayout>
-
-            </eightbitlab.com.blurview.BlurView>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

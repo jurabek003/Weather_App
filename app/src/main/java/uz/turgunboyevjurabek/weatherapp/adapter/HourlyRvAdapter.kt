@@ -1,5 +1,6 @@
 package uz.turgunboyevjurabek.weatherapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,8 @@ import uz.turgunboyevjurabek.weatherapp.model.madels.hourly.Hourly
 class HourlyRvAdapter:RecyclerView.Adapter<HourlyRvAdapter.Vh>() {
     private val list=ArrayList<Hourly>()
     inner class Vh(val itemRvHourlyBinding: ItemRvHourlyBinding):ViewHolder(itemRvHourlyBinding.root){
-        fun onBind(apiHourly: Hourly,position: Int){
+        @SuppressLint("SetTextI18n")
+        fun onBind(apiHourly: Hourly, position: Int){
             // gradusni aniqlash uchun
             val c=apiHourly.main.tempMax-273.0
             itemRvHourlyBinding.thtC.text=c.toInt().toString()+"°"
